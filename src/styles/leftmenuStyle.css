@@ -1,0 +1,10 @@
+.el-submenu .el-menu-item{
+  min-width: 30px;
+}
+.el-menu-item-group__title{
+  font-size: 20px;
+}
+.el-submenu__title *{
+  vertical-align: baseline;
+}
+

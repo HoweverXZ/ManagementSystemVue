@@ -1,27 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from "../components/HelloWorld";
 import App from "../App";
+import leftmenulist from "../components/leftmenulist";
+import purchaserTable from "../components/purchaserTable";
 import UpdateVue from "../components/UpdateVue";
 
 Vue.use(Router)
 
 export default new Router({
+  name: 'router',
   mode : 'history',
   routes: [
-    {
-      path: '/hello',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
     {
       path:'/',
       component:App
     },
     {
-      path:'/update',
-      name:'upadate',
-      component: UpdateVue
-    }
+      path: '/menu',
+      component: leftmenulist,
+      children:[
+        {
+          path:'purchaserTable',
+          component:purchaserTable
+        },
+        {
+          path:'update',
+          component:UpdateVue
+        }
+      ]
+    },
   ]
 })

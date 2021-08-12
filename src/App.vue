@@ -1,13 +1,11 @@
 <template>
-  <hello-world></hello-world>
-<!--  <UpdateVue></UpdateVue>-->
+  <router-view></router-view>
 </template>
 
 <script>
-  import HelloWorld from "./components/HelloWorld";
-  import UpdateVue from "./components/UpdateVue";
+  import Leftmenulist from "./components/leftmenulist";
   export default {
     name:'App',
-    components: {HelloWorld,UpdateVue}
+    components: {Leftmenulist},
   }
 </script>

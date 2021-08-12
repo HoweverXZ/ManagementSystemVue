@@ -3,7 +3,8 @@
     <el-table
       :data="tableData.filter(data => !search || data.contact.toLowerCase().includes(search.toLowerCase())||data.consumer.toLowerCase().includes(search.toLowerCase()))"
       style="width: 100%"
-      :row-class-name="colorChanger">
+      :row-class-name="colorChanger"
+      >
       <el-table-column
         fixed
         prop="purchasetime"
@@ -91,8 +92,7 @@
 <script>
 
   export default {
-    name: 'HelloWorld',
-
+    name: 'purchaseTable',
     data() {
       return {
         tableData: [{
@@ -110,7 +110,7 @@
       }
     },
     created() {
-      this.axios.get("http://25.42.74.59:7758/purchase")
+      this.axios.get("http://localhost:7758/purchase")
         .then((response) => {
           this.tableData = response.data
           console.log(response.data)
@@ -119,7 +119,7 @@
       })
     },
     methods: {
-      colorChanger({row,rowIndex}) {
+      colorChanger({row, rowIndex}) {
         if (row.deposit == true) {
           return 'donnotobey_row';
         } else if (row.deposit == false) {
@@ -127,7 +127,7 @@
         }
         return '';
       }
-  }
+    }
   }
 </script>
 
