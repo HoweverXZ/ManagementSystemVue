@@ -1,6 +1,5 @@
 <template>
-  <el-container direction="horizontal">
-    <el-header></el-header>
+  <el-container>
     <el-aside>
       <el-menu
         :default-active="this.$route.path"
@@ -43,7 +42,6 @@
     <el-main>
       <router-view></router-view>
     </el-main>
-    <el-footer></el-footer>
   </el-container>
 </template>
 
