@@ -1,6 +1,7 @@
 <template>
-  <el-row class="tac">
-    <el-col :span="3">
+  <el-container direction="horizontal">
+    <el-header></el-header>
+    <el-aside>
       <el-menu
         :default-active="this.$route.path"
         @open="handleOpen"
@@ -38,17 +39,16 @@
           <span slot="title">后台设置</span>
         </el-menu-item>
       </el-menu>
-    </el-col>
-    <el-col>
-      <el-main>
-        <router-view></router-view>
-      </el-main>
-    </el-col>
-  </el-row>
+    </el-aside>
+    <el-main>
+      <router-view></router-view>
+    </el-main>
+    <el-footer></el-footer>
+  </el-container>
 </template>
 
 <style>
-@import "../styles/leftmenuStyle.css";
+  @import "../styles/leftmenuStyle.css";
 </style>
 
 <script>
