@@ -2,24 +2,24 @@
   <div>
     <el-table
       :data="tableData.filter(data => !search || data.contact.toLowerCase().includes(search.toLowerCase())||data.consumer.toLowerCase().includes(search.toLowerCase()))"
-      style="width: 100%"
+      style="width: 110%"
       :row-class-name="colorChanger"
       >
       <el-table-column
         fixed
         prop="purchasetime"
         label="购买时间"
-        width="200">
+        width="160">
       </el-table-column>
       <el-table-column
         prop="modelspecification"
         label="型号规格"
-        width="120">
+        width="80">
       </el-table-column>
       <el-table-column
         prop="consumer"
         label="消费者"
-        width="120">
+        width="90">
       </el-table-column>
       <el-table-column
         prop="contact"
@@ -60,7 +60,7 @@
       <el-table-column
         prop="tips"
         label="备注"
-        width="160">
+        width="100">
       </el-table-column>
       <el-table-column>
         <template slot="header" slot-scope="scope">
