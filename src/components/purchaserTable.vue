@@ -4,7 +4,7 @@
       :data="tableData.filter(data => !search || data.contact.toLowerCase().includes(search.toLowerCase())||data.consumer.toLowerCase().includes(search.toLowerCase()))"
       style="width: 110%"
       :row-class-name="colorChanger"
-      >
+    >
       <el-table-column
         fixed
         prop="purchasetime"
@@ -60,7 +60,7 @@
       <el-table-column
         prop="tips"
         label="备注"
-        width="100">
+        width="140">
       </el-table-column>
       <el-table-column>
         <template slot="header" slot-scope="scope">
@@ -71,28 +71,49 @@
           />
         </template>
         <template slot-scope="scope">
-          <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-          <el-button type="text" size="small">编辑</el-button>
+          <el-popover
+            placement="bottom"
+            width="150"
+            trigger="hover"
+            content="查看用户详细信息"
+            :open-delay=300>
+            <el-button slot="reference" type="info" icon="el-icon-search" circle></el-button>
+          </el-popover>
+          <el-popover
+            placement="bottom"
+            width="150"
+            trigger="hover"
+            content="编辑订单信息"
+            :open-delay=300>
+            <el-button slot="reference" type="primary" icon="el-icon-edit"></el-button>
+          </el-popover>
         </template>
       </el-table-column>
     </el-table>
+    <el-row>
+      <el-col class="buttoncow" style="text-align: right">
+        <el-button type="primary" round @click="dialogVisible=true">添加新订单</el-button>
+      </el-col>
+    </el-row>
+    <div class=>
+      <el-dialog title="提示" :visible.sync="dialogVisible" :before-close="handleClose">
+        <addform></addform>
+        <el-button @click="dialogVisible = false" circle>取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </el-dialog>
+    </div>
   </div>
 </template>
 
 <style>
-  .el-table .obey_row {
-    background: oldlace;
-  }
-
-  .el-table .donnotobey_row {
-    background: #f0f9eb;
-  }
+  @import "../styles/purchaseTableStyle.css";
 </style>
 
 <script>
-
+  import Addform from "./purchaseaddform";
   export default {
     name: 'purchaseTable',
+    components: {Addform},
     data() {
       return {
         tableData: [{
@@ -106,7 +127,8 @@
           arrears: '',
           tips: '',
         }],
-        search: ''
+        search: '',
+        dialogVisible: false,
       }
     },
     created() {
@@ -126,6 +148,15 @@
           return 'obey_row';
         }
         return '';
+      },
+      handleClose(done) {
+        this.$confirm('确定关闭吗').then(() => {
+          // function(done)，done 用于关闭 Dialog
+          done();
+          console.info("点击右上角 'X' ，取消按钮或遮罩层时触发");
+        }).catch(() => {
+          console.log("点击确定时触发");
+        });
       }
     }
   }

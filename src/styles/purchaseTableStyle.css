@@ -1,0 +1,23 @@
+/*不同行颜色改变*/
+.el-table .obey_row {
+  background: oldlace;
+}
+.el-table .donnotobey_row {
+  background: #f0f9eb;
+}
+/*底部按钮*/
+.buttoncow{
+  text-align: right;
+  padding: 10px 23px;
+}
+/*其他列靠右*/
+.el-table td, .el-table th{
+  text-align: right;
+}
+/*第七列第十列居中*/
+.el-table_1_column_10{
+  text-align: center !important;
+}
+.el-table_1_column_7{
+   text-align: center !important;
+ }

@@ -4,28 +4,28 @@ import App from "../App";
 import leftmenulist from "../components/leftmenulist";
 import purchaserTable from "../components/purchaserTable";
 import UpdateVue from "../components/UpdateVue";
-
+import purchaseaddform from "../components/purchaseaddform";
 Vue.use(Router)
 
 export default new Router({
   name: 'router',
-  mode : 'history',
+  mode: 'history',
   routes: [
     {
-      path:'/',
-      component:App
+      path: '/',
+      component: App
     },
     {
       path: '/menu',
       component: leftmenulist,
-      children:[
+      children: [
         {
-          path:'purchaserTable',
-          component:purchaserTable
+          path: 'purchaserTable',
+          component: purchaserTable,
         },
         {
-          path:'update',
-          component:UpdateVue
+          path: 'update',
+          component: UpdateVue
         }
       ]
     },

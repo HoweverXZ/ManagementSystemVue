@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container class="homeWrap">
     <el-aside>
       <el-menu
         :default-active="this.$route.path"
@@ -25,14 +25,6 @@
             <el-menu-item index="1-4">已租出</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
-        <!--        <el-menu-item index="2">-->
-        <!--          <i class="el-icon-menu"></i>-->
-        <!--          <span slot="title">导航二</span>-->
-        <!--        </el-menu-item>-->
-        <!--        <el-menu-item index="3" disabled>-->
-        <!--          <i class="el-icon-document"></i>-->
-        <!--          <span slot="title">导航三</span>-->
-        <!--        </el-menu-item>-->
         <el-menu-item index="2">
           <i class="el-icon-setting"></i>
           <span slot="title">后台设置</span>
