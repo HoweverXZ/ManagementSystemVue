@@ -55,7 +55,8 @@
       <el-table-column
         prop="arrears"
         label="欠款"
-        width="100">
+        width="100"
+      sortable>
       </el-table-column>
       <el-table-column
         prop="tips"
@@ -95,7 +96,7 @@
         <el-button type="primary" round @click="dialogVisible=true">添加新订单</el-button>
       </el-col>
     </el-row>
-    <div class=>
+    <div>
       <el-dialog title="提示" :visible.sync="dialogVisible" :before-close="handleClose">
         <addform></addform>
         <el-button @click="dialogVisible = false" circle>取 消</el-button>
