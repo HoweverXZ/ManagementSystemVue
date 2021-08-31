@@ -4,7 +4,7 @@ import App from "../App";
 import leftmenulist from "../components/leftmenulist";
 import purchaserTable from "../components/purchaserTable";
 import UpdateVue from "../components/UpdateVue";
-import purchaseaddform from "../components/purchaseaddform";
+
 Vue.use(Router)
 
 export default new Router({

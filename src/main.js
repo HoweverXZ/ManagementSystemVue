@@ -7,9 +7,10 @@ import axios from 'axios'
 import Vueaxios from 'vue-axios';
 import App from "./App";
 import router from './router'
-Vue.config.productionTip = false
 
+Vue.config.productionTip = false
 Vue.use(ElementUI);
+
 
 
 Vue . use ( Vueaxios , axios )
