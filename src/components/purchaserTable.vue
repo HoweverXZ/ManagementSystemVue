@@ -2,7 +2,7 @@
   <div>
     <el-table
       :data="tableData.filter(data => !search || data.contact.toLowerCase().includes(search.toLowerCase())||data.consumer.toLowerCase().includes(search.toLowerCase()))"
-      style="width: 110%"
+      style="width: 110%;height: 700px"
       :row-class-name="colorChanger"
     >
       <el-table-column
@@ -88,14 +88,16 @@
             :open-delay=300>
             <el-button slot="reference" type="primary" icon="el-icon-edit"></el-button>
           </el-popover>
-          <el-popover
-            placement="bottom"
-            width="150"
-            trigger="hover"
-            content="删除信息"
-            :open-delay=300>
+          <el-popconfirm
+            confirm-button-text='确定'
+            cancel-button-text='取消'
+            icon="el-icon-info"
+            icon-color="red"
+            @confirm="del(scope.row.contact)"
+            title="删除后无法复原 确定要删除吗？"
+          >
             <el-button slot="reference" type="danger" icon="el-icon-delete"></el-button>
-          </el-popover>
+          </el-popconfirm>
         </template>
       </el-table-column>
     </el-table>
@@ -147,7 +149,7 @@
       })
     },
     methods: {
-      colorChanger({row, rowIndex}) {
+      colorChanger({row}) {
         if (row.deposit == true) {
           return 'donnotobey_row';
         } else if (row.deposit == false) {
@@ -156,13 +158,30 @@
         return '';
       },
       handleClose(done) {
-        this.$confirm('确定关闭吗').then(() => {
+        this.$confirm('确定关闭会丢失已经输入的信息').then(() => {
           // function(done)，done 用于关闭 Dialog
           done();
           console.info("点击右上角 'X' ，取消按钮或遮罩层时触发");
         }).catch(() => {
           console.log("点击确定时触发");
         });
+      },
+      del(contact) {
+        if (contact!=null){
+        this.axios.delete("http://localhost:7758/purchase", {
+          params: {
+            contact: contact
+          }
+        }).then(alert("删除成功！")).catch(function (err){
+          console.log(err)
+          alert("出现问题请联系开发者")
+        })}else {
+          alert("出现问题请联系开发者")
+        }
+
+      },
+      logtest(test){
+        console.log(test)
       }
     }
   }

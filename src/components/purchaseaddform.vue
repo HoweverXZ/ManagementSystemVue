@@ -74,7 +74,9 @@
         this.$refs[formName].validate((valid) => {
           if (this.purchaseForm.productprice >= this.purchaseForm.paymentamount) {
             console.log(qs.stringify (this.purchaseForm))
-            this.axios.post('http://localhost:7758/purchase', qs.stringify(this.purchaseForm)).then(this.opensucc)
+            this.axios.post('http://localhost:7758/purchase', qs.stringify(this.purchaseForm)).then(this.opensucc).catch(function (err){
+              alert("添加失败 可能是用户已存在 尝试搜索!")
+            })
           } else {
             this.opendialog()
             return false;
