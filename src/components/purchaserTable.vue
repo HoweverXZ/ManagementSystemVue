@@ -61,7 +61,9 @@
       <el-table-column
         prop="tips"
         label="备注"
-        width="140">
+        width="140"
+        show-overflow-tooltip=“true”
+      >
       </el-table-column>
       <el-table-column>
         <template slot="header" slot-scope="scope">
